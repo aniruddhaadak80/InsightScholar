@@ -1,7 +1,7 @@
 
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Brain, Menu, X } from "lucide-react";
+import { Brain, Menu, X, Zap } from "lucide-react";
 import { useState } from "react";
 
 const Header = () => {
@@ -15,11 +15,16 @@ const Header = () => {
     setIsMenuOpen(false);
   };
 
+  const navigateToAITools = () => {
+    window.location.href = '/ai-tools';
+    setIsMenuOpen(false);
+  };
+
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-200">
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
-          <div className="flex items-center space-x-2 cursor-pointer" onClick={() => scrollToSection('hero')}>
+          <div className="flex items-center space-x-2 cursor-pointer" onClick={() => window.location.href = '/'}>
             <div className="bg-gradient-to-r from-scholar-blue to-scholar-purple p-2 rounded-xl">
               <Brain className="h-6 w-6 text-white" />
             </div>
@@ -38,6 +43,13 @@ const Header = () => {
               className="text-gray-700 hover:text-scholar-blue transition-colors"
             >
               Features
+            </button>
+            <button 
+              onClick={navigateToAITools}
+              className="text-gray-700 hover:text-scholar-blue transition-colors flex items-center space-x-1"
+            >
+              <Zap className="h-4 w-4" />
+              <span>AI Tools</span>
             </button>
             <button 
               onClick={() => scrollToSection('how-it-works')}
@@ -82,6 +94,13 @@ const Header = () => {
               className="block w-full text-left text-gray-700 hover:text-scholar-blue transition-colors py-2"
             >
               Features
+            </button>
+            <button 
+              onClick={navigateToAITools}
+              className="block w-full text-left text-gray-700 hover:text-scholar-blue transition-colors py-2 flex items-center space-x-2"
+            >
+              <Zap className="h-4 w-4" />
+              <span>AI Tools</span>
             </button>
             <button 
               onClick={() => scrollToSection('how-it-works')}
