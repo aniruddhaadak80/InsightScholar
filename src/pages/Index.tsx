@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -15,6 +14,8 @@ import HowItWorks from "@/components/HowItWorks";
 import AnalysisSection from "@/components/AnalysisSection";
 import VisualizationDemo from "@/components/VisualizationDemo";
 import Footer from "@/components/Footer";
+import ResearchTrends from "@/components/ResearchTrends";
+import InteractiveStats from "@/components/InteractiveStats";
 
 const Index = () => {
   return (
@@ -22,7 +23,9 @@ const Index = () => {
       <Header />
       <Hero />
       <Features />
+      <ResearchTrends />
       <HowItWorks />
+      <InteractiveStats />
       <AnalysisSection />
       <VisualizationDemo />
       <Footer />
