@@ -1,12 +1,31 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Separator } from "@/components/ui/separator";
+import { FileText, BarChart3, Network, Lightbulb, Upload, Search, Brain, Users, Zap, TrendingUp } from "lucide-react";
+import { useState } from "react";
+import { toast } from "sonner";
+import Header from "@/components/Header";
+import Hero from "@/components/Hero";
+import Features from "@/components/Features";
+import HowItWorks from "@/components/HowItWorks";
+import AnalysisSection from "@/components/AnalysisSection";
+import VisualizationDemo from "@/components/VisualizationDemo";
+import Footer from "@/components/Footer";
 
 const Index = () => {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
-      </div>
+    <div className="min-h-screen bg-gradient-to-br from-white via-scholar-lightBlue to-scholar-lightPurple">
+      <Header />
+      <Hero />
+      <Features />
+      <HowItWorks />
+      <AnalysisSection />
+      <VisualizationDemo />
+      <Footer />
     </div>
   );
 };
