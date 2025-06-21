@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -154,86 +153,107 @@ const AITools = () => {
     : aiFeatures.filter(feature => feature.category === selectedCategory);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-white via-scholar-lightBlue to-scholar-lightPurple">
-      <Header />
+    <div className="min-h-screen relative">
+      {/* Main background image for AI Tools page */}
+      <div 
+        className="fixed inset-0 bg-cover bg-center bg-no-repeat z-0"
+        style={{
+          backgroundImage: "linear-gradient(rgba(15,23,42,0.8), rgba(30,41,59,0.8)), url('https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=1920&h=1080&fit=crop')"
+        }}
+      />
       
-      <main className="pt-24 pb-16">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-scholar-blue to-scholar-purple bg-clip-text text-transparent">
-              AI-Powered Research Tools
-            </h1>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Transform your research workflow with our comprehensive suite of AI-powered analysis tools
-            </p>
-          </div>
+      {/* Secondary overlay with circuit pattern */}
+      <div 
+        className="fixed inset-0 opacity-20 bg-cover bg-center bg-no-repeat z-1"
+        style={{
+          backgroundImage: "url('https://images.unsplash.com/photo-1518770660439-4636190af475?w=1920&h=1080&fit=crop')"
+        }}
+      />
 
-          {/* Category Filter */}
-          <div className="flex flex-wrap justify-center gap-2 mb-8">
-            {categories.map((category) => (
-              <Button
-                key={category}
-                variant={selectedCategory === category ? "default" : "outline"}
-                onClick={() => setSelectedCategory(category)}
-                className={selectedCategory === category ? "bg-gradient-to-r from-scholar-blue to-scholar-purple" : ""}
-              >
-                {category}
-              </Button>
-            ))}
-          </div>
+      <div className="relative z-10">
+        <Header />
+        
+        <main className="pt-24 pb-16">
+          <div className="container mx-auto px-4">
+            <div className="text-center mb-12">
+              <h1 className="text-4xl md:text-5xl font-bold mb-6 text-white drop-shadow-2xl">
+                AI-Powered Research Tools
+              </h1>
+              <p className="text-xl text-gray-200 max-w-3xl mx-auto drop-shadow-lg">
+                Transform your research workflow with our comprehensive suite of AI-powered analysis tools
+              </p>
+            </div>
 
-          {/* AI Features Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            {filteredFeatures.map((feature, index) => (
-              <Card 
-                key={feature.id}
-                className="group hover:shadow-2xl transition-all duration-500 cursor-pointer border-0 bg-white/80 backdrop-blur-sm animate-slide-up"
-                style={{ animationDelay: `${index * 0.1}s` }}
-                onClick={() => setSelectedFeature(feature)}
-              >
-                <div className="p-6 text-center">
-                  <div className={`w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-r ${feature.color} flex items-center justify-center group-hover:scale-110 transition-transform`}>
-                    <feature.icon className="h-8 w-8 text-white" />
+            {/* Category Filter */}
+            <div className="flex flex-wrap justify-center gap-2 mb-8">
+              {categories.map((category) => (
+                <Button
+                  key={category}
+                  variant={selectedCategory === category ? "default" : "outline"}
+                  onClick={() => setSelectedCategory(category)}
+                  className={selectedCategory === category 
+                    ? "bg-gradient-to-r from-scholar-blue to-scholar-purple shadow-lg" 
+                    : "bg-white/10 backdrop-blur-sm border-white/20 text-white hover:bg-white/20"
+                  }
+                >
+                  {category}
+                </Button>
+              ))}
+            </div>
+
+            {/* AI Features Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+              {filteredFeatures.map((feature, index) => (
+                <Card 
+                  key={feature.id}
+                  className="group hover:shadow-2xl transition-all duration-500 cursor-pointer border-0 bg-white/90 backdrop-blur-sm animate-slide-up hover:scale-105"
+                  style={{ animationDelay: `${index * 0.1}s` }}
+                  onClick={() => setSelectedFeature(feature)}
+                >
+                  <div className="p-6 text-center">
+                    <div className={`w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-r ${feature.color} flex items-center justify-center group-hover:scale-110 transition-transform shadow-lg`}>
+                      <feature.icon className="h-8 w-8 text-white" />
+                    </div>
+                    
+                    <Badge variant="secondary" className="mb-2 text-xs">
+                      {feature.category}
+                    </Badge>
+                    
+                    <h3 className="text-lg font-bold mb-3 text-gray-800 group-hover:text-scholar-blue transition-colors">
+                      {feature.title}
+                    </h3>
+                    
+                    <p className="text-gray-600 text-sm leading-relaxed">
+                      {feature.description}
+                    </p>
+                    
+                    <Button 
+                      className="mt-4 w-full bg-gradient-to-r from-scholar-blue to-scholar-purple hover:opacity-90 shadow-lg"
+                      size="sm"
+                    >
+                      Try Now
+                    </Button>
                   </div>
-                  
-                  <Badge variant="secondary" className="mb-2 text-xs">
-                    {feature.category}
-                  </Badge>
-                  
-                  <h3 className="text-lg font-bold mb-3 text-gray-800 group-hover:text-scholar-blue transition-colors">
-                    {feature.title}
-                  </h3>
-                  
-                  <p className="text-gray-600 text-sm leading-relaxed">
-                    {feature.description}
-                  </p>
-                  
-                  <Button 
-                    className="mt-4 w-full bg-gradient-to-r from-scholar-blue to-scholar-purple hover:opacity-90"
-                    size="sm"
-                  >
-                    Try Now
-                  </Button>
-                </div>
-              </Card>
-            ))}
+                </Card>
+              ))}
+            </div>
           </div>
-        </div>
-      </main>
+        </main>
 
-      {/* AI Feature Modal */}
-      {selectedFeature && (
-        <AIFeatureModal
-          isOpen={!!selectedFeature}
-          onClose={() => setSelectedFeature(null)}
-          title={selectedFeature.title}
-          description={selectedFeature.description}
-          analysisType={selectedFeature.id}
-          icon={selectedFeature.icon}
-        />
-      )}
+        {/* AI Feature Modal */}
+        {selectedFeature && (
+          <AIFeatureModal
+            isOpen={!!selectedFeature}
+            onClose={() => setSelectedFeature(null)}
+            title={selectedFeature.title}
+            description={selectedFeature.description}
+            analysisType={selectedFeature.id}
+            icon={selectedFeature.icon}
+          />
+        )}
 
-      <Footer />
+        <Footer />
+      </div>
     </div>
   );
 };
