@@ -18,7 +18,7 @@ const AnalysisSection = () => {
   const [error, setError] = useState<string | null>(null);
 
   const analyzeWithGemini = async (content: string) => {
-    const API_KEY = "REMOVED_LEAKED_GOOGLE_KEY";
+    const API_KEY = import.meta.env.VITE_GEMINI_API_KEY as string;
     
     try {
       setError(null);
